@@ -4,8 +4,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class calcolatrice {
-    private double op1;
-    private double op2;
+    private double [] op;
+    private int numOp;
     private double risultato;
     private String controlloOp;
     private Scanner in=new Scanner(System.in);
@@ -22,8 +22,15 @@ public class calcolatrice {
 
     public void setOp()
     {
-        this.op1=this.controllore();
-        this.op2=this.controllore();
+        System.out.println("Su quanti operatori si vuole effettuare l'operazione?\t");
+        this.numOp=in.nextInt();//controllore da fare
+        this.op=new double[this.numOp];
+        for(int i=0; i<this.numOp; i++)
+        {
+            this.op[i]=this.controllore();
+        }
+        //this.op1=this.controllore();
+        //this.op2=this.controllore();
     }
 
     public double controllore()
@@ -50,22 +57,42 @@ public class calcolatrice {
 
     public double somma()
     {
-        return this.op1+this.op2;
+        this.risultato=this.op[0];
+        for(int i=1; i<this.numOp;i++)
+        {
+            this.risultato+=this.op[i];
+        }
+        return this.risultato;
     }
 
     public double differenza()
     {
-        return this.op1-this.op2;
+        this.risultato=this.op[0];
+        for(int i=1; i<this.numOp;i++)
+        {
+            this.risultato-=this.op[i];
+        }
+        return this.risultato;
     }
 
     public double moltiplicazione()
     {
-        return this.op1*this.op2;
+        this.risultato=this.op[0];
+        for(int i=1; i<this.numOp;i++)
+        {
+            this.risultato*=this.op[i];
+        }
+        return this.risultato;
     }
 
     public double divisione()
     {
-        return this.op1/this.op2;
+        this.risultato=this.op[0];
+        for(int i=1; i<this.numOp;i++)
+        {
+            this.risultato/=this.op[i];
+        }
+        return this.risultato;
     }
 
 }
