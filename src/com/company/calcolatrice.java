@@ -22,19 +22,20 @@ public class calcolatrice {
 
     public void setOp()
     {
-        this.setOp1();
-        this.setOp2();
+        this.op1=this.controllore();
+        this.op2=this.controllore();
     }
 
-    public void setOp1()
+    public double controllore()
     {
+        double operatore=0.0D;
         controlloOp="false";
         while(this.controlloOp.equals("false"))
         {
-            System.out.print("Inserire il primo operatore:\t");
+            System.out.print("Inserire operatore:\t");
             try
             {
-                this.op1=this.in.nextDouble();
+                operatore=in.nextDouble();
                 this.controlloOp="true";
             }catch(InputMismatchException ime)
             {
@@ -43,26 +44,9 @@ public class calcolatrice {
                 in.nextLine();
             }
         }
+        return operatore;
     }
 
-    public void setOp2()
-    {
-        controlloOp="false";
-        while(this.controlloOp.equals("false"))
-        {
-            System.out.print("Inserire il secondo operatore:\t");
-            try
-            {
-                this.op2=this.in.nextDouble();
-                this.controlloOp="true";
-            }catch(InputMismatchException ime)
-            {
-                this.controlloOp="false";
-                System.out.println("Valore non valido!!");
-                in.nextLine();
-            }
-        }
-    }
 
     public double somma()
     {
