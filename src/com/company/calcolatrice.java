@@ -1,9 +1,10 @@
 package com.company;
 
+import com.company.interfaccia.OperazioniInterface;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class calcolatrice {
+public class calcolatrice implements OperazioniInterface {
     private double [] op;
     private int numOp;
     private double risultato;
