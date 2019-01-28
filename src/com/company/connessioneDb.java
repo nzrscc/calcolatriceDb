@@ -45,7 +45,7 @@ public class connessioneDb {
     public void CreaTabella() {
         try {
             DatabaseMetaData dbm = this.connection.getMetaData();
-            ResultSet tabella = dbm.getTables((String)null, (String)null, "REGISTRAZIONE", (String[])null);
+            ResultSet tabella = dbm.getTables((String)null, (String)null, "CALCOLATRICE", (String[])null);
             if (tabella.next()) {
                 System.out.println("La tabella esiste!");
             } else {
