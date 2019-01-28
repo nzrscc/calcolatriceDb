@@ -23,12 +23,25 @@ public class Calcolatrice implements OperazioniInterface {
 
     public void setOp()
     {
-        System.out.println("Su quanti operatori si vuole effettuare l'operazione?\t");
-        this.numOp=in.nextInt();//controllore da fare
-        this.op=new double[this.numOp];
-        for(int i=0; i<this.numOp; i++)
-        {
-            this.op[i]=this.controllore();
+        String ctrlOp = "false";
+        while(ctrlOp.equals("false")){
+            try {
+                System.out.println("Su quanti operatori si vuole effettuare l'operazione?\t");
+                this.numOp = in.nextInt();
+                this.op = new double[this.numOp];
+                for (int i = 0; i < this.numOp; i++) {
+                    this.op[i] = this.controllore();
+                }
+                ctrlOp="true";
+            }
+            catch(InputMismatchException ime)
+            {
+                ctrlOp="false";
+                System.out.println("Valore non valido!!\t("+ime.toString()+")\n");
+            }
+        finally {
+                in.nextLine();
+            }
         }
     }
 
