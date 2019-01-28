@@ -6,6 +6,8 @@ public class Main {
     public static int controllo;
 
     public static void main(String[] args) {
+        ConnessioneDb con=new ConnessioneDb();
+        con.Connessionedb();
         Scanner in = new Scanner(System.in);
         Calcolatrice op = new Calcolatrice();
         do

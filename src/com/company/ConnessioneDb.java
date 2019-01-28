@@ -1,19 +1,25 @@
 package com.company;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Properties;
 import java.util.Scanner;
 
 public class ConnessioneDb {
     private String driverName = "com.mysql.cj.jdbc.Driver";
-    private String serverName = "localhost";
-    private String databaseName = "db_prova";
-    private String username = "nzrscc_root";
-    private String password = "24286";
+    private String serverName;
+    private String databaseName;
+    private String username;
+    private String password;
+    private FileInputStream fin;
+    private Properties p;
     private String url;
     private Connection connection;
     private Statement stmt;
@@ -23,12 +29,21 @@ public class ConnessioneDb {
     private String cognome;
     private int età;
 
-    public ConnessioneDb() {
+    /*public ConnessioneDb() {
+
         this.url = "jdbc:mysql://" + this.serverName + "/" + this.databaseName + "?user=" + this.username + "?password=" + this.password;
-    }
+    }*/
 
     public void Connessionedb() {
         try {
+            this.fin=new FileInputStream("src/com/company/db.properties");
+            this.p = new Properties();
+            this.p.load(fin);
+            this.serverName=p.getProperty("sN");
+            this.databaseName=p.getProperty("dN");
+            this.username=p.getProperty("uN");
+            this.password=p.getProperty("uP");
+            this.url = "jdbc:mysql://" + this.serverName + "/" + this.databaseName + "?user=" + this.username + "?password=" + this.password;
             Class.forName(this.driverName);
             System.out.println("Connessione al database selezionato ...");
             this.connection = DriverManager.getConnection(this.url, this.username, this.password);
@@ -38,6 +53,12 @@ public class ConnessioneDb {
             var2.printStackTrace();
         } catch (ClassNotFoundException var3) {
             var3.printStackTrace();
+        }catch (FileNotFoundException fnfe)
+        {
+            fnfe.printStackTrace();
+        }catch (IOException ie)
+        {
+            ie.printStackTrace();
         }
 
     }
