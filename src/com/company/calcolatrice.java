@@ -7,7 +7,7 @@ public class calcolatrice {
     private double op1;
     private double op2;
     private double risultato;
-    private String controlloOp="false";
+    private String controlloOp;
     private Scanner in=new Scanner(System.in);
 
     public void setRisultato(double risultato)
