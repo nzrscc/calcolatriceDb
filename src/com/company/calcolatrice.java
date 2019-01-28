@@ -29,8 +29,6 @@ public class calcolatrice {
         {
             this.op[i]=this.controllore();
         }
-        //this.op1=this.controllore();
-        //this.op2=this.controllore();
     }
 
     public double controllore()
