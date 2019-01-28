@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        calcolatrice op = new calcolatrice();
+        Calcolatrice op = new Calcolatrice();
         do
         {
             controllo=0;

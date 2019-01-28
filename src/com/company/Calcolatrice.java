@@ -4,7 +4,7 @@ import com.company.interfaccia.OperazioniInterface;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class calcolatrice implements OperazioniInterface {
+public class Calcolatrice implements OperazioniInterface {
     private double [] op;
     private int numOp;
     private double risultato;

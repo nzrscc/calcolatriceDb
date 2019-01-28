@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-public class connessioneDb {
+public class ConnessioneDb {
     private String driverName = "com.mysql.cj.jdbc.Driver";
     private String serverName = "localhost";
     private String databaseName = "db_prova";
@@ -23,7 +23,7 @@ public class connessioneDb {
     private String cognome;
     private int età;
 
-    public connessioneDb() {
+    public ConnessioneDb() {
         this.url = "jdbc:mysql://" + this.serverName + "/" + this.databaseName + "?user=" + this.username + "?password=" + this.password;
     }
 
