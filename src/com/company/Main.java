@@ -8,6 +8,7 @@ public class Main {
     public static void main(String[] args) {
         ConnessioneDb con=new ConnessioneDb();
         con.Connessionedb();
+        con.CreaTabella();
         Scanner in = new Scanner(System.in);
         Calcolatrice op = new Calcolatrice();
         do
@@ -21,24 +22,28 @@ public class Main {
                 case 1: {
                     op.setOp();
                     op.setRisultato(op.somma());
+                    con.setOperazione('+');
                     System.out.println("Il risultato è: "+op.getRisultato());
                     break;
                 }
                 case 2:{
                     op.setOp();
                     op.setRisultato(op.differenza());
+                    con.setOperazione('-');
                     System.out.println("Il risultato è: "+op.getRisultato());
                     break;
                 }
                 case 3:{
                     op.setOp();
                     op.setRisultato(op.moltiplicazione());
+                    con.setOperazione('*');
                     System.out.println("Il risultato è: "+op.getRisultato());
                     break;
                 }
                 case 4:{
                     op.setOp();
                     op.setRisultato(op.divisione());
+                    con.setOperazione('/');
                     System.out.println("Il risultato è: "+op.getRisultato());
                     break;
                 }

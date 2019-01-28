@@ -28,11 +28,12 @@ public class ConnessioneDb {
     private String nome;
     private String cognome;
     private int età;
+    private char operazione;
 
-    /*public ConnessioneDb() {
-
-        this.url = "jdbc:mysql://" + this.serverName + "/" + this.databaseName + "?user=" + this.username + "?password=" + this.password;
-    }*/
+    public void setOperazione(char operazione)
+    {
+        this.operazione=operazione;
+    }
 
     public void Connessionedb() {
         try {
@@ -70,9 +71,9 @@ public class ConnessioneDb {
             if (tabella.next()) {
                 System.out.println("La tabella esiste!");
             } else {
-                String sql = "CREATE TABLE IF NOT EXISTS REGISTRAZIONE (id INTEGER not NULL,  nome VARCHAR(255),  cognome VARCHAR(255),  età INTEGER,  PRIMARY KEY ( id ))";
+                String sql = "CREATE TABLE IF NOT EXISTS CALCOLATRICE (Primo_Operatore DOUBLE , Operazione char, Secondo_Operatore DOUBLE, Risultato DOUBLE)";
                 this.stmt.executeUpdate(sql);
-                System.out.println("La tabella REGISTRAZIONE è stata creata!");
+                System.out.println("La tabella CALCOLATRICE è stata creata!");
             }
         } catch (SQLException var4) {
             var4.printStackTrace();
