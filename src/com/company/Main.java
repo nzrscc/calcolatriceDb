@@ -54,7 +54,8 @@ public class Main {
                 }
             }
             con.PopolaTabella(ope);
-            System.out.print("Si vuole effettuare una nuova operazione?\t");
+            con.ScaricoDati();
+            System.out.print("\nSi vuole effettuare una nuova operazione?\t");
             System.out.println();
             scelta=in.next();
             scelta=scelta.toUpperCase();

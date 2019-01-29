@@ -86,15 +86,6 @@ public class ConnessioneDb {
     public void PopolaTabella(Calcolatrice ope ) {
         Scanner scan = new Scanner(System.in);
         timestamp=new Timestamp(System.currentTimeMillis());
-        /*System.out.print("Inserire id: ");
-        this.id = scan.nextInt();
-        System.out.print("Inserire nome: ");
-        this.nome = scan.next();
-        System.out.print("Inserire cognome: ");
-        this.cognome = scan.next();
-        System.out.print("Inserire età: ");
-        this.età = scan.nextInt();
-        */
         String operatori= Arrays.toString(ope.getOp()); //Stringa contenente tutti gli operatori
         System.out.println(operatori);
 
@@ -110,15 +101,14 @@ public class ConnessioneDb {
 
     public void ScaricoDati() {
         try {
-            ResultSet resultset = this.stmt.executeQuery("SELECT id, nome, cognome, età FROM REGISTRAZIONE");
+            ResultSet resultset = this.stmt.executeQuery("SELECT* FROM CALCOLATRICE");
             System.out.println("Lettura informazioni...\n");
-
             while(resultset.next()) {
-                int id = resultset.getInt(1);
-                String nome = resultset.getString(2);
-                String cognome = resultset.getString(3);
-                int età = resultset.getInt(4);
-                System.out.println("Id: " + id + ";\t\t Nome: " + nome + ";\t\tCognome: " + cognome + ";\t\tEtà: " + età);
+                String operatori = resultset.getString(1);
+                String operazione = resultset.getString(2);
+                double risultato  = resultset.getDouble(3);
+                String data = resultset.getString(4);
+                System.out.println("Operatori: " + operatori + ";\t\t Operazione: " + operazione + ";\t\tRisultato: " + risultato + ";\t\tData: " + data);
             }
         } catch (SQLException var6) {
             var6.printStackTrace();
@@ -130,6 +120,7 @@ public class ConnessioneDb {
         if (this.connection != null) {
             try {
                 this.connection.close();
+                this.stmt.close();
                 System.out.println("Connessione chiusa!!");
             } catch (SQLException var2) {
                 var2.printStackTrace();
