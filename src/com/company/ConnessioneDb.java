@@ -3,12 +3,8 @@ package com.company;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Arrays;
 import java.util.Properties;
 import java.util.Scanner;
 
@@ -29,10 +25,16 @@ public class ConnessioneDb {
     private String cognome;
     private int età;
     private char operazione;
+    private Timestamp timestamp;
 
     public void setOperazione(char operazione)
     {
         this.operazione=operazione;
+    }
+
+    public char getOperazione()
+    {
+        return this.operazione;
     }
 
     public void Connessionedb() {
@@ -71,7 +73,7 @@ public class ConnessioneDb {
             if (tabella.next()) {
                 System.out.println("La tabella esiste!");
             } else {
-                String sql = "CREATE TABLE IF NOT EXISTS CALCOLATRICE (Primo_Operatore DOUBLE , Operazione char, Secondo_Operatore DOUBLE, Risultato DOUBLE)";
+                String sql = "CREATE TABLE IF NOT EXISTS CALCOLATRICE (Operatori VARCHAR(100), Operazione CHAR, Risultato DOUBLE, Data_Operazione VARCHAR(30))";
                 this.stmt.executeUpdate(sql);
                 System.out.println("La tabella CALCOLATRICE è stata creata!");
             }
@@ -81,9 +83,10 @@ public class ConnessioneDb {
 
     }
 
-    public void PopolaTabella() {
+    public void PopolaTabella(Calcolatrice ope ) {
         Scanner scan = new Scanner(System.in);
-        System.out.print("Inserire id: ");
+        timestamp=new Timestamp(System.currentTimeMillis());
+        /*System.out.print("Inserire id: ");
         this.id = scan.nextInt();
         System.out.print("Inserire nome: ");
         this.nome = scan.next();
@@ -91,9 +94,12 @@ public class ConnessioneDb {
         this.cognome = scan.next();
         System.out.print("Inserire età: ");
         this.età = scan.nextInt();
+        */
+        String operatori= Arrays.toString(ope.getOp()); //Stringa contenente tutti gli operatori
+        System.out.println(operatori);
 
         try {
-            String sql = "INSERT INTO REGISTRAZIONE ( id, nome, cognome, età) VALUES ('" + this.id + "', '" + this.nome + "', '" + this.cognome + "', '" + this.età + "')";
+            String sql = "INSERT INTO CALCOLATRICE (Operatori, Operazione, Risultato, Data_Operazione) VALUES ('" + operatori + "', '" + this.operazione + "', '" + ope.getRisultato() + "', '" + timestamp + "')";
             this.stmt.executeUpdate(sql);
             System.out.println("\nRecord aggiunto!!");
         } catch (SQLException var3) {

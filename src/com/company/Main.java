@@ -10,7 +10,7 @@ public class Main {
         con.Connessionedb();
         con.CreaTabella();
         Scanner in = new Scanner(System.in);
-        Calcolatrice op = new Calcolatrice();
+        Calcolatrice ope = new Calcolatrice();
         do
         {
             controllo=0;
@@ -20,31 +20,31 @@ public class Main {
             {
                 case 0: break;
                 case 1: {
-                    op.setOp();
-                    op.setRisultato(op.somma());
+                    ope.setOp();
+                    ope.setRisultato(ope.somma());
                     con.setOperazione('+');
-                    System.out.println("Il risultato è: "+op.getRisultato());
+                    System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
                 case 2:{
-                    op.setOp();
-                    op.setRisultato(op.differenza());
+                    ope.setOp();
+                    ope.setRisultato(ope.differenza());
                     con.setOperazione('-');
-                    System.out.println("Il risultato è: "+op.getRisultato());
+                    System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
                 case 3:{
-                    op.setOp();
-                    op.setRisultato(op.moltiplicazione());
+                    ope.setOp();
+                    ope.setRisultato(ope.moltiplicazione());
                     con.setOperazione('*');
-                    System.out.println("Il risultato è: "+op.getRisultato());
+                    System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
                 case 4:{
-                    op.setOp();
-                    op.setRisultato(op.divisione());
+                    ope.setOp();
+                    ope.setRisultato(ope.divisione());
                     con.setOperazione('/');
-                    System.out.println("Il risultato è: "+op.getRisultato());
+                    System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
                 default:
@@ -53,6 +53,7 @@ public class Main {
                     break;
                 }
             }
+            con.PopolaTabella(ope);
             System.out.print("Si vuole effettuare una nuova operazione?\t");
             System.out.println();
             scelta=in.next();

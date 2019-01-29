@@ -11,6 +11,7 @@ public class Calcolatrice implements OperazioniInterface {
     private String controlloOp;
     private Scanner in=new Scanner(System.in);
 
+
     public void setRisultato(double risultato)
     {
         this.risultato=risultato;
@@ -43,6 +44,11 @@ public class Calcolatrice implements OperazioniInterface {
                 in.nextLine();
             }
         }
+    }
+
+    public double [] getOp()
+    {
+        return op;
     }
 
     public double controllore()
