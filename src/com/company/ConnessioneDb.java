@@ -24,15 +24,15 @@ public class ConnessioneDb {
     private String nome;
     private String cognome;
     private int età;
-    private char operazione;
+    private String operazione;
     private Timestamp timestamp;
 
-    public void setOperazione(char operazione)
+    public void setOperazione(String operazione)
     {
         this.operazione=operazione;
     }
 
-    public char getOperazione()
+    public String getOperazione()
     {
         return this.operazione;
     }
@@ -73,7 +73,7 @@ public class ConnessioneDb {
             if (tabella.next()) {
                 System.out.println("La tabella esiste!");
             } else {
-                String sql = "CREATE TABLE IF NOT EXISTS CALCOLATRICE (Operatori VARCHAR(100), Operazione CHAR, Risultato DOUBLE, Data_Operazione VARCHAR(30))";
+                String sql = "CREATE TABLE IF NOT EXISTS CALCOLATRICE (Operatori VARCHAR(100), Operazione VARCHAR(10), Risultato DOUBLE, Data_Operazione VARCHAR(30))";
                 this.stmt.executeUpdate(sql);
                 System.out.println("La tabella CALCOLATRICE è stata creata!");
             }

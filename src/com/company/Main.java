@@ -22,28 +22,28 @@ public class Main {
                 case 1: {
                     ope.setOp();
                     ope.setRisultato(ope.somma());
-                    con.setOperazione('+');
+                    con.setOperazione("\t+");
                     System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
                 case 2:{
                     ope.setOp();
                     ope.setRisultato(ope.differenza());
-                    con.setOperazione('-');
+                    con.setOperazione("\t-");
                     System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
                 case 3:{
                     ope.setOp();
                     ope.setRisultato(ope.moltiplicazione());
-                    con.setOperazione('*');
+                    con.setOperazione("\t*");
                     System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
                 case 4:{
                     ope.setOp();
                     ope.setRisultato(ope.divisione());
-                    con.setOperazione('/');
+                    con.setOperazione("\t/");
                     System.out.println("Il risultato è: "+ope.getRisultato());
                     break;
                 }
