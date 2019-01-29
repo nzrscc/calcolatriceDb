@@ -60,7 +60,7 @@ public class Main {
             scelta=in.next();
             scelta=scelta.toUpperCase();
         }while(scelta.equals("SI"));
-
+        con.ChiudiConnessione();
     }
 
     public static int controlloCarattere()
