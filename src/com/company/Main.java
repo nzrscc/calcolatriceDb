@@ -1,4 +1,6 @@
 package com.company;
+import com.company.util.EspressioneToArray;
+
 import java.util.*;
 public class Main {
 
@@ -6,11 +8,18 @@ public class Main {
     public static int controllo;
 
     public static void main(String[] args) {
-        ConnessioneDb con=new ConnessioneDb();
-        con.Connessionedb();
-        con.CreaTabella();
+        //ConnessioneDb con=new ConnessioneDb();
+        //con.Connessionedb();
+        //con.CreaTabella();
         Scanner in = new Scanner(System.in);
-        Calcolatrice ope = new Calcolatrice();
+        System.out.println("Scrivi espressione : ");
+        String espressione=in.nextLine();
+        int operandi[]= EspressioneToArray.getNumbersArrayFromExp(espressione);
+        String operations[]=EspressioneToArray.getOperatorsArrayFromExp(espressione);
+        System.out.println(operandi);
+        System.out.println(operations);
+
+        /*Calcolatrice ope = new Calcolatrice();
         do
         {
             controllo=0;
@@ -61,6 +70,7 @@ public class Main {
             scelta=scelta.toUpperCase();
         }while(scelta.equals("SI"));
         con.ChiudiConnessione();
+        */
     }
 
     public static int controlloCarattere()
