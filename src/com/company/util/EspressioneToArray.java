@@ -1,27 +1,32 @@
 package com.company.util;
 
-import static com.sun.org.apache.xalan.internal.lib.ExsltStrings.split;
-
 public class  EspressioneToArray {
-    public static int[] getNumbersArrayFromExp(String espressione)
-    {
 
-        String tempEspression [] = espressione.split("\\+|\\*|\\|\\-|");
-        int result[] = new int[tempEspression.length];
-        for (int i=0;i<tempEspression.length;i++) {
-            result[i]=Integer.parseInt(tempEspression[i]);
+    public static Integer[] getNumbersArrayFromExp(String espressione)
+    {
+        String delimiters = "\\+|\\-|\\*|\\/";
+        String[] tokensVal = espressione.split(delimiters);
+        Integer result[] = new Integer[tokensVal.length];
+        //System.out.println("Count of tokens = " + tokensVal.length);
+        for(int i=0;i<tokensVal.length;i++) {
+            result[i]=Integer.parseInt(tokensVal[i]);
         }
         return result;
     }
 
-    public static String[] getOperatorsArrayFromExp(String espressione)
+    public static char[] getOperatorsArrayFromExp(String espressione)
     {
-
-        String tempEspression [] = espressione.split("  |D");
-        String result[] = new String[tempEspression.length];
-        for (int i=0;i<tempEspression.length;i++) {
-            result[i]=tempEspression[i];
+        StringBuilder temp = new StringBuilder();
+        char tempArray[]=espressione.toCharArray();
+        for (int i=0;i<espressione.length();i++)
+        {
+            if((tempArray[i]=='+')||(tempArray[i]=='-')||(tempArray[i]=='/')||(tempArray[i]=='*'))
+            {
+                temp.append(tempArray[i]);
+            }
         }
-        return result;
+        String stringaOperatori=temp.toString();
+        char []arrayOperatori=stringaOperatori.toCharArray();
+        return arrayOperatori;
     }
 }

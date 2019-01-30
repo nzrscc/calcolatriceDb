@@ -13,11 +13,11 @@ public class Main {
         //con.CreaTabella();
         Scanner in = new Scanner(System.in);
         System.out.println("Scrivi espressione : ");
-        String espressione=in.nextLine();
-        int operandi[]= EspressioneToArray.getNumbersArrayFromExp(espressione);
-        String operations[]=EspressioneToArray.getOperatorsArrayFromExp(espressione);
-        System.out.println(operandi);
-        System.out.println(operations);
+        String espressione=in.next();
+        Integer operandi[]= EspressioneToArray.getNumbersArrayFromExp(espressione);
+        char operations[]=EspressioneToArray.getOperatorsArrayFromExp(espressione);
+        for (int i=0;i<operandi.length;i++) System.out.println("Operando["+i+"]="+operandi[i]);
+        for (int i=0;i<operations.length;i++) System.out.println("Operatore["+i+"]="+operations[i]);
 
         /*Calcolatrice ope = new Calcolatrice();
         do
