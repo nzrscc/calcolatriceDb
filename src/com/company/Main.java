@@ -24,6 +24,7 @@ public class Main {
                     ope.setRisultato(ope.somma());
                     con.setOperazione("\t+");
                     System.out.println("Il risultato è: "+ope.getRisultato());
+                    con.PopolaTabella(ope);
                     break;
                 }
                 case 2:{
@@ -31,6 +32,7 @@ public class Main {
                     ope.setRisultato(ope.differenza());
                     con.setOperazione("\t-");
                     System.out.println("Il risultato è: "+ope.getRisultato());
+                    con.PopolaTabella(ope);
                     break;
                 }
                 case 3:{
@@ -38,6 +40,7 @@ public class Main {
                     ope.setRisultato(ope.moltiplicazione());
                     con.setOperazione("\t*");
                     System.out.println("Il risultato è: "+ope.getRisultato());
+                    con.PopolaTabella(ope);
                     break;
                 }
                 case 4:{
@@ -45,6 +48,7 @@ public class Main {
                     ope.setRisultato(ope.divisione());
                     con.setOperazione("\t/");
                     System.out.println("Il risultato è: "+ope.getRisultato());
+                    con.PopolaTabella(ope);
                     break;
                 }
                 default:
@@ -53,13 +57,20 @@ public class Main {
                     break;
                 }
             }
-            con.PopolaTabella(ope);
-            con.ScaricoDati();
             System.out.print("\nSi vuole effettuare una nuova operazione?\t");
             System.out.println();
             scelta=in.next();
             scelta=scelta.toUpperCase();
         }while(scelta.equals("SI"));
+        System.out.print("Si vogliono scaricare i dati dal Db? ");
+        {
+            scelta=in.next();
+            scelta=scelta.toUpperCase();
+            if(scelta.equals("SI"))
+            {
+                con.ScaricoDati();
+            }
+        }
         con.ChiudiConnessione();
     }
 
